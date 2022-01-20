@@ -11,7 +11,7 @@ function MemeGenerator() {
   const address = `https://api.memegen.link/images/${imageKey}/${topText}/${bottomText}`;
 
   useEffect(() => {
-    fetch('https://api.memegen.link/templates/')
+    void fetch('https://api.memegen.link/templates/')
       .then((response) => response.json())
       .then((data) => {
         const responseMemeImage = data.map((meme) => {
@@ -22,8 +22,8 @@ function MemeGenerator() {
   }, []);
 
   function handleDownloadClick() {
-    fetch(address).then((response) => {
-      response.arrayBuffer().then((buffer) => {
+    void fetch(address).then((response) => {
+      void response.arrayBuffer().then((buffer) => {
         const element = document.createElement('a');
         const file = new Blob([buffer], { type: 'image/jpeg' });
         element.href = URL.createObjectURL(file);
@@ -52,7 +52,7 @@ function MemeGenerator() {
             setBottomText(event.currentTarget.value);
           }}
         />
-        <p>Select your meme here:</p>
+        <p>Select your Meme Template:</p>
         <select
           onChange={(event) => {
             setImageKey(event.currentTarget.value);
