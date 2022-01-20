@@ -7,10 +7,11 @@ function MemeGenerator() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [memeImage, setMemeImage] = useState([]);
+
   const address = `https://api.memegen.link/images/${imageKey}/${topText}/${bottomText}`;
 
   useEffect(() => {
-    void fetch('https://api.memegen.link/templates/')
+    fetch('https://api.memegen.link/templates/')
       .then((response) => response.json())
       .then((data) => {
         const responseMemeImage = data.map((meme) => {
@@ -21,8 +22,8 @@ function MemeGenerator() {
   }, []);
 
   function handleDownloadClick() {
-    void fetch(address).then((response) => {
-      void response.arrayBuffer().then((buffer) => {
+    fetch(address).then((response) => {
+      response.arrayBuffer().then((buffer) => {
         const element = document.createElement('a');
         const file = new Blob([buffer], { type: 'image/jpeg' });
         element.href = URL.createObjectURL(file);
@@ -34,15 +35,18 @@ function MemeGenerator() {
 
   return (
     <section>
-      <div>
+      <div className="body">
         <h1>React Meme Generator</h1>
         <input
+          className="topText"
+          placeholder="Enter Your Top Text"
           value={topText}
           onChange={(event) => {
             setTopText(event.currentTarget.value);
           }}
         />
         <input
+          placeholder="Enter Your Bottom Text"
           value={bottomText}
           onChange={(event) => {
             setBottomText(event.currentTarget.value);
@@ -61,12 +65,14 @@ function MemeGenerator() {
           ))}
         </select>
       </div>
-      <div className="picture" css={image}>
-        <img src={address} alt=" " />
+      <div css={image}>
+        <img className="picture" src={address} alt=" " />
       </div>
 
       <div>
-        <button onClick={handleDownloadClick}>Download!</button>
+        <button className="button" onClick={handleDownloadClick}>
+          Download!
+        </button>
       </div>
     </section>
   );
