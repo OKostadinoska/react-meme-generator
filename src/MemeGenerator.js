@@ -58,18 +58,20 @@ function MemeGenerator() {
             }}
           />
         </label>
-        <p>Select your Meme Template:</p>
-        <select
-          onChange={(event) => {
-            setImageKey(event.currentTarget.value);
-          }}
-        >
-          {memeImage.map((id) => (
-            <option key={id} value={id}>
-              {id}
-            </option>
-          ))}
-        </select>
+        <label>
+          Meme template
+          <select
+            onChange={(event) => {
+              setImageKey(event.currentTarget.value);
+            }}
+          >
+            {memeImage.map((id) => (
+              <option key={id} value={id}>
+                {id}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
       <div css={image}>
         <img
