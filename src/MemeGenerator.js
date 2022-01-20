@@ -37,27 +37,23 @@ function MemeGenerator() {
     <section>
       <div className="body">
         <h1>React Meme Generator</h1>
-        <label>
-          Top Text:
-          <input
-            className="topText"
-            placeholder="Enter Your Top Text"
-            value={topText}
-            onChange={(event) => {
-              setTopText(event.currentTarget.value);
-            }}
-          />
-        </label>
-        <label>
-          Bottom Text:
-          <input
-            placeholder="Enter Your Bottom Text"
-            value={bottomText}
-            onChange={(event) => {
-              setBottomText(event.currentTarget.value);
-            }}
-          />
-        </label>
+        <input
+          className="topText"
+          placeholder="Enter Your Top Text"
+          value={topText}
+          onChange={(event) => {
+            setTopText(event.currentTarget.value);
+          }}
+        />
+        <label htmlFor="Top Text">Top Text:</label>
+        <input
+          placeholder="Enter Your Bottom Text"
+          value={bottomText}
+          onChange={(event) => {
+            setBottomText(event.currentTarget.value);
+          }}
+        />
+        <label htmlFor="Bottom Text">Bottom Text:</label>
         <p>Select your Meme Template:</p>
         <select
           onChange={(event) => {
