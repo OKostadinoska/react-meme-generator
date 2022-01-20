@@ -45,7 +45,7 @@ function MemeGenerator() {
             setTopText(event.currentTarget.value);
           }}
         />
-        <label htmlFor="Top Text">Top Text:</label>
+        <label htmlFor="Top text">Top text</label>
         <input
           placeholder="Enter Your Bottom Text"
           value={bottomText}
@@ -53,7 +53,7 @@ function MemeGenerator() {
             setBottomText(event.currentTarget.value);
           }}
         />
-        <label htmlFor="Bottom Text">Bottom Text:</label>
+        <label htmlFor="Bottom text">Bottom text</label>
         <p>Select your Meme Template:</p>
         <select
           onChange={(event) => {
