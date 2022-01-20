@@ -66,7 +66,12 @@ function MemeGenerator() {
         </select>
       </div>
       <div css={image}>
-        <img className="picture" src={address} alt=" " />
+        <img
+          data-test-id="meme-image"
+          className="picture"
+          src={address}
+          alt=" "
+        />
       </div>
 
       <div>
