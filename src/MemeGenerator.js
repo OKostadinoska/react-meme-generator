@@ -38,7 +38,7 @@ function MemeGenerator() {
       <div className="body">
         <h1>React Meme Generator</h1>
         <label>
-          Top text:
+          Top text
           <input
             className="topText"
             placeholder="Enter Your Top Text"
@@ -49,7 +49,7 @@ function MemeGenerator() {
           />
         </label>
         <label>
-          Bottom text:
+          Bottom text
           <input
             placeholder="Enter Your Bottom Text"
             value={bottomText}
