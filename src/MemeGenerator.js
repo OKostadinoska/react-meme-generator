@@ -7,8 +7,11 @@ function MemeGenerator() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [memeImage, setMemeImage] = useState([]);
+  const [customUrl, setCustomUrl] = useState(
+    'https://api.memegen.link/images/ds.png',
+  );
 
-  const address = `https://api.memegen.link/images/custom/${imageKey}/${topText}/${bottomText}`;
+  // const address = `https://api.memegen.link/images/ds.png/${imageKey}/${topText}/${bottomText}`;
 
   useEffect(() => {
     fetch('https://api.memegen.link/templates/')
@@ -25,7 +28,7 @@ function MemeGenerator() {
   });
 
   function handleDownloadClick() {
-    void fetch(address).then((response) => {
+    void fetch(setCustomUrl).then((response) => {
       response
         .arrayBuffer()
         .then((buffer) => {
@@ -85,7 +88,7 @@ function MemeGenerator() {
         <img
           data-test-id="meme-image"
           className="picture"
-          src={address}
+          src={`https://api.memegen.link/images/${imageKey}/${topText}/${bottomText}.jpg`}
           alt=" "
         />
       </div>
