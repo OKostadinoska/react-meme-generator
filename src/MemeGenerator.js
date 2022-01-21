@@ -11,25 +11,33 @@ function MemeGenerator() {
   const address = `https://api.memegen.link/images/${imageKey}/${topText}/${bottomText}`;
 
   useEffect(() => {
-    void fetch('https://api.memegen.link/templates/')
+    fetch('https://api.memegen.link/templates/')
       .then((response) => response.json())
       .then((data) => {
         const responseMemeImage = data.map((meme) => {
           return meme.id;
         });
         setMemeImage(responseMemeImage);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
       });
-  }, []);
+  });
 
   function handleDownloadClick() {
     void fetch(address).then((response) => {
-      void response.arrayBuffer().then((buffer) => {
-        const element = document.createElement('a');
-        const file = new Blob([buffer], { type: 'image/jpeg' });
-        element.href = URL.createObjectURL(file);
-        element.download = 'image.jpg';
-        element.click();
-      });
+      response
+        .arrayBuffer()
+        .then((buffer) => {
+          const element = document.createElement('a');
+          const file = new Blob([buffer], { type: 'image/jpeg' });
+          element.href = URL.createObjectURL(file);
+          element.download = 'image.jpg';
+          element.click();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     });
   }
 
