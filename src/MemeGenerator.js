@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 let image;
 
 function MemeGenerator() {
-  const [imageKey, setImageKey] = useState('buzz');
+  const [imageKey, setImageKey] = useState('');
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [memeImage, setMemeImage] = useState([]);
 
-  const address = `https://api.memegen.link/images/${imageKey}/${topText}/${bottomText}`;
+  const address = `https://api.memegen.link/images/custom/${imageKey}/${topText}/${bottomText}`;
 
   useEffect(() => {
     fetch('https://api.memegen.link/templates/')
@@ -92,7 +92,7 @@ function MemeGenerator() {
 
       <div>
         <button className="button" onClick={handleDownloadClick}>
-          Download!
+          Download
         </button>
       </div>
     </section>
