@@ -11,8 +11,6 @@ function MemeGenerator() {
     'https://api.memegen.link/images/ds.png',
   );
 
-  // const address = `https://api.memegen.link/images/ds.png/${imageKey}/${topText}/${bottomText}`;
-
   useEffect(() => {
     fetch('https://api.memegen.link/templates/')
       .then((response) => response.json())
