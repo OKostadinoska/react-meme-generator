@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-let image;
-
 function MemeGenerator() {
   const [imageKey, setImageKey] = useState('');
   const [topText, setTopText] = useState('');
@@ -23,7 +21,7 @@ function MemeGenerator() {
       .catch((error) => {
         console.error('Error:', error);
       });
-  });
+  }, []);
 
   function handleDownloadClick() {
     void fetch(setCustomUrl).then((response) => {
@@ -82,7 +80,7 @@ function MemeGenerator() {
           </select>
         </label>
       </div>
-      <div css={image}>
+      <div css={customUrl}>
         <img
           data-test-id="meme-image"
           className="picture"
